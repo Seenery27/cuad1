@@ -67,7 +67,7 @@ void TPoro::Posicion(int x, int y) {
 }
 
 void TPoro::Color(char * color) {
-    strcpy(this->color, color);
+    this->color = turnLowercase(color);
 }
 
 // Getters
@@ -87,7 +87,7 @@ bool TPoro::EsVacio() {
     return false;
 }
 
-ostream & operator<<(ostream &os,TPoro &poro){
+friend ostream & operator<<(ostream &os,const TPoro &poro){
     if(!poro.EsVacio){
         os.setf(ios::fixed);
         os.precision( 2 );
