@@ -67,7 +67,7 @@ void TPoro::Posicion(int x, int y) {
 }
 
 void TPoro::Color(char * color) {
-    this->color = turnLowercase(color);
+    strcpy(this->color, color);
 }
 
 // Getters
