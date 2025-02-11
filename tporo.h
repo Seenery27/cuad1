@@ -6,7 +6,7 @@
 using namespace std;
 
 class TPoro {
-    friend ostream & operator<<(ostream &, TPoro &);
+	friend ostream & operator<<(ostream &, const TPoro &);
 	private:
         int x;
 		int y;
