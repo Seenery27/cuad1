@@ -6,7 +6,7 @@ TPoro::TPoro() {
     this->x = 0;
     this->y = 0;
     this->volumen = 0;
-    this->color = 0;
+    this->color = nullptr;
 
 }
 
