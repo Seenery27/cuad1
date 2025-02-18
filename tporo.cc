@@ -87,10 +87,11 @@ bool TPoro::EsVacio() {
     return false;
 }
 
-friend ostream & operator<<(ostream &os,const TPoro &poro){
-    if(!poro.EsVacio){
+ostream & operator<<(ostream &os,const TPoro &poro){
+    
+    if(!poro.EsVacio()){
         os.setf(ios::fixed);
-        os.precision( 2 );
+        os.precision(2);
         os<<"("<<poro.x<<", "<<poro.y<<") "<<poro.volumen<<" ";
         if(poro.color!=NULL)
         os<<poro.color;
