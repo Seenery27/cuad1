@@ -65,4 +65,43 @@ TVectorPoro::operator!=(const TVectorPoro &ob) {
     return !(*this == ob);
 }
 
+TPoro&
+TVectorPoro::operator[](int index) {
+    if (index < 1 || index > dimension) return error;
+    return datos[index-1];
+}
 
+TPoro
+TVectorPoro::operator[](int index) const {
+    if (index < 1 || index > dimension) return error;
+    return datos[index-1];
+}
+
+int
+TVectorPoro::Longitud() const {return dimension;}
+
+int 
+TVectorPoro::Cantidad() const {
+    int count = 0;
+    for (int i = 0; i < dimension; i++) {
+        if (!datos[i].EsVacio()) count++;
+    }
+    return count;
+}
+
+bool
+TVectorPoro::Redimensionar(int newDim) {
+    if (newDim <= 0 || newDim == dimension) return false;
+
+    TPoro *newDatos = new TPoro[newDim];
+    int minDim;
+    if (newDim < dimension) minDim = newDim; else minDim = dimension;
+    for (int i = 0; i < minDim; i++) {
+        newDatos[i] = datos[i];
+    }
+    delete[] datos;
+    datos = newDatos;
+    dimension = newDim;
+    return true;
+
+}
