@@ -103,5 +103,14 @@ TVectorPoro::Redimensionar(int newDim) {
     datos = newDatos;
     dimension = newDim;
     return true;
+}
 
+ostream & operator<<(ostream &os,const TVectorPoro &vectorporo) {
+    os << "[";
+    for (int i = 0; i < vectorporo.dimension; i++) {
+        os << i << " " << vectorporo[i];
+        if (i != vectorporo.dimension) os << " "; 
+    }
+    os << "]";
+    return os;
 }

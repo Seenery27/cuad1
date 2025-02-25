@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#ifndef __TVECTORPORO__
+#define __TVECTORPORO__
 #include "tporo.h"
 
 class TVectorPoro {
-    friend ostream & operator<<(ostream &, TVectorPoro &);
+    friend ostream & operator<<(ostream &, const TVectorPoro &);
     private:
         int dimension;
         TPoro *datos;
@@ -23,3 +25,6 @@ class TVectorPoro {
         int Cantidad()const ;
         bool Redimensionar(int);
 };
+
+
+#endif
