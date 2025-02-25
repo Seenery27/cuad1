@@ -15,11 +15,11 @@ class TVectorPoro {
         ~TVectorPoro();
         TVectorPoro& operator=(TVectorPoro &);
 
-        bool operator==(TVectorPoro &);
-        bool operator!=(TVectorPoro &);
+        bool operator==(const TVectorPoro &);
+        bool operator!=(const TVectorPoro &);
         TPoro& operator[](int);
         TPoro operator[](int) const;
-        int Longitud();
-        int Cantidad();
+        int Longitud()const ;
+        int Cantidad()const ;
         bool Redimensionar(int);
 };

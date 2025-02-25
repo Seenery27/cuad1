@@ -17,15 +17,15 @@ class TPoro {
 		TPoro();
 		TPoro(int, int, double);
 		TPoro(int, int, double, char*);
-		TPoro(TPoro &);
+		TPoro(const TPoro &);
 		~TPoro();
-		TPoro & operator=(TPoro &);
+		TPoro & operator=(const TPoro &);
 
 		//------Methods
 
 		// Operators
-		bool operator==(TPoro &);
-		bool operator!=(TPoro &);
+		bool operator==(const TPoro &)const;
+		bool operator!=(const TPoro &)const;
 
 		//Setters
 		void Posicion(int,int);
@@ -33,11 +33,11 @@ class TPoro {
 		void Color(char*);
 
 		//Getters
-		int PosicionX();
-		int PosicionY();
-		double Volumen();
-		char* Color();
-		bool EsVacio();
+		int PosicionX() const;
+		int PosicionY() const;
+		double Volumen() const;
+		char* Color() const;
+        bool EsVacio() const;
 };
 
 #endif

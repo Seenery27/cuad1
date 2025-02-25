@@ -6,14 +6,14 @@ TPoro::TPoro() {
     this->x = 0;
     this->y = 0;
     this->volumen = 0;
-    this->color = NULL;
-
+    this->color = nullptr;
 }
 
 TPoro::TPoro(int x, int y, double volumen) {
     this->x = x;
     this->y = y;
     this->volumen = volumen;
+    this->color = nullptr;
 }
 
 TPoro::TPoro(int x, int y, double volumen, char* color) {
@@ -23,7 +23,7 @@ TPoro::TPoro(int x, int y, double volumen, char* color) {
     this->color = turnLowercase(color);
 }
 
-TPoro::TPoro(TPoro &o) {
+TPoro::TPoro(const TPoro &o) {
     this->x = o.x;
     this->y = o.y;
     this->volumen = o.volumen;
@@ -31,19 +31,17 @@ TPoro::TPoro(TPoro &o) {
 }
 
 TPoro::~TPoro() {
-    this->x = 0;
-    this->y = 0;
-    this->volumen = 0;
-    this->color = NULL;
+    delete[] color;
+    color = nullptr;
 }
 
 TPoro&
-TPoro::operator=(TPoro &o2) {
+TPoro::operator=(const TPoro &o2) {
     (*this).~TPoro();
     x = o2.x;
     y = o2.y;
     volumen = o2.volumen;
-    strcpy(color, o2.color);
+    color = o2.color;
 
     return *this;
 
@@ -52,15 +50,15 @@ TPoro::operator=(TPoro &o2) {
 // Operator functions
 
 bool
-TPoro::operator==(TPoro &ob) {
-    bool temp;
-    temp = (x == ob.x && y == ob.y && volumen == ob.volumen && color == ob.color) ? true : false;
+TPoro::operator==(const TPoro &ob) const{
 
-    return temp;
+    return (x == ob.x && y == ob.y && volumen == ob.volumen && ((color == nullptr && ob.color == nullptr) ||(color && ob.color && strcmp(color,ob.color)==0)));
+
+
 }
 
 bool
-TPoro::operator!=(TPoro &ob) {
+TPoro::operator!=(const TPoro &ob)const {
     return !(*this == ob);
 }
 
@@ -72,22 +70,28 @@ void TPoro::Posicion(int x, int y) {
 }
 
 void TPoro::Color(char * color) {
-    strcpy(this->color, color);
+    delete[] color;
+    color = turnLowercase(color);
 }
 
 // Getters
 
-int TPoro::PosicionX() {return x;}
+int TPoro::PosicionX()const {return x;}
 
-int TPoro::PosicionY() {return y;}
+int TPoro::PosicionY()const {return y;}
 
-double TPoro::Volumen() {return volumen;}
+double TPoro::Volumen()const {return volumen;}
 
-char* TPoro::Color() {return color;}
+char* TPoro::Color() const{
+    if (!color) return nullptr;
+    char* copy = new char[strlen(color)+1];
+    strncpy(copy, color, strlen(color)+1);
+    return copy;
+}
 
 
 // Method to check if all values are 0 or empty
-bool TPoro::EsVacio() const{
+bool TPoro::EsVacio()const{
     if (x == 0 && y == 0 && volumen == 0 && color == NULL) return true;
     return false;
 }
