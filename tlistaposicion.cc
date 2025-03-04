@@ -42,6 +42,6 @@ TListaPosicion::Anterior() {
     return lastPos;
 }
 
-bool TListaPosicion::EsVacia() {
+bool TListaPosicion::EsVacia()const {
     return pos == nullptr;
 }

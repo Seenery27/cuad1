@@ -1,7 +1,10 @@
+#include "tlistaposicion.h"
+
+
 #ifndef __TLISTAPORO__
 #define __TLISTAPORO__
 
-#include "tlistaposicion.h"
+
 using namespace std;
 
 class TListaPoro {
@@ -10,23 +13,29 @@ class TListaPoro {
         TListaNodo *primero;
         TListaNodo *ultimo;
     public:
+        //------Canonical forms
         TListaPoro();
-        TListaPoro(TListaPoro &);
+        TListaPoro(const TListaPoro &);
         ~TListaPoro();
-        TListaPoro& operator=(TListaPoro &);
+        TListaPoro& operator=(const TListaPoro &);
+        
+        //------Methods
 
-        bool operator==(TListaPoro &);
-        bool operator+(TListaPoro &);
-        bool operator-(TListaPoro &);
+        //Operators
+        bool operator==(const TListaPoro &);
+        bool operator+(const TListaPoro &);
+        bool operator-(const TListaPoro &);
+
+        //Setters and 
         bool esVacia();
-        bool Insertar(TPoro &);
-        bool Borrar(TPoro &);
-        bool Boorar(TListaPosicion &);
-        TPoro Obtener(TListaPosicion &);
-        bool Buscar(TPoro &);
+        bool Insertar(const TPoro &);
+        bool Borrar(const TPoro &);
+        bool Borrar(const TListaPosicion &);
+        TPoro Obtener(const TListaPosicion &);
+        bool Buscar(const TPoro &)const;
         int Longitud();
-        TListaPosicion Primera();
-        TListaPosicion Ultima();
+        TListaPosicion Primera()const;
+        TListaPosicion Ultima()const;
         TListaPoro ExtraerRango(int n1, int n2);
 
 };

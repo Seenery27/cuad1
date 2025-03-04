@@ -1,13 +1,14 @@
+#include "tporo.h"
 
 #ifndef __TLISTANODO__
 #define __TLISTANODO__
 
-#include "tporo.h"
 
 
 class TListaNodo {
     friend class TListaPoro;
     friend class TListaPosicion;
+    friend ostream & operator<<(ostream &, const TListaPoro &);
     private:
         TPoro e;
         TListaNodo *anterior;
