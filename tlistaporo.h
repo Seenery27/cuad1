@@ -1,5 +1,6 @@
-#include <iostream>
-#include "tlistanodo.h"
+#ifndef __TLISTAPORO__
+#define __TLISTAPORO__
+
 #include "tlistaposicion.h"
 using namespace std;
 
@@ -29,3 +30,5 @@ class TListaPoro {
         TListaPoro ExtraerRango(int n1, int n2);
 
 };
+
+#endif
