@@ -1,15 +1,22 @@
-#include <iostream>
+
+#ifndef __TLISTANODO__
+#define __TLISTANODO__
+
 #include "tporo.h"
-using namespace std;
+
 
 class TListaNodo {
+    friend class TListaPoro;
+    friend class TListaPosicion;
     private:
         TPoro e;
         TListaNodo *anterior;
         TListaNodo *siguente;
     public:
         TListaNodo();
-        TListaNodo(TListaNodo &);
+        TListaNodo(const TListaNodo &);
         ~TListaNodo();
-        TListaNodo& operator=(TListaNodo &);
+        TListaNodo& operator=(const TListaNodo &);
 };
+
+#endif
